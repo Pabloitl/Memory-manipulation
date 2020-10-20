@@ -32,24 +32,24 @@ void enterData() {
 		scanf("%d %d", &Arows, &Acolumns);
 		printf("Ingrese filas y columnas para la matriz B: ");
 		scanf("%d %d", &Brows, &Bcolumns);
-	} while (Acolumns != Brows); 	
+	} while (Acolumns != Brows);
 
-    	/* Se definen las dimensiones de las matrices A, B y la Resultante C */
-    	 A = initializeMatrix(Arows, Acolumns);
-   	 B = initializeMatrix(Brows, Bcolumns);
-   	 C = initializeMatrix(Arows, Bcolumns);
+    /* Se definen las dimensiones de las matrices A, B y la Resultante C */
+	A = initializeMatrix(Arows, Acolumns);
+   	B = initializeMatrix(Brows, Bcolumns);
+   	C = initializeMatrix(Arows, Bcolumns);
 
 	/* Se poblan las matrices con enterMatrix */
 	printf("\nIngrese los elementos de A\n");
-        enterMatrix(A, Arows, Acolumns);
+    enterMatrix(A, Arows, Acolumns);
 
 	printf("\nIngrese los elementos de B\n");
-        enterMatrix(B, Brows, Bcolumns);
+    enterMatrix(B, Brows, Bcolumns);
 }
 
 /* Llenado de los campos de las matrices */
 void enterMatrix(int *M, int Mrows, int Mcolumns) {
-	/* Se llena la matriz M de arriba a abajo y de izquierda a derecha */
+	/* Se llena la matriz M con valores que da el usuario */
 	for(int row = 0; row < Mrows; ++row)
 		for(int column = 0; column < Mcolumns; ++column) {
 			printf("Ingrese elemento [%d,%d]: ", row + 1, column + 1);
@@ -66,7 +66,7 @@ int* initializeMatrix(int Mrows, int Mcolumns) {
 /* Método que realiza la multiplicación */
 void multiplyMatrices()
 {
-	/* A11*B11 + A21*B12 + A31* B31... */ 
+	/* A11*B11 + A21*B12 + A31* B31... */
 	for(int row = 0; row < Arows; ++row) {
 		for(int column = 0; column < Bcolumns; ++column) {
 			for(int k=0; k < Acolumns; ++k) {
@@ -103,7 +103,7 @@ void display(int *M, int Mrows, int Mcolumns)
 /* Método que libera la memoria */
 void cleanMemory() {
     /* Desaloja la memoria ocupada cuando se llamó calloc */
-    free(A); 
+    free(A);
     free(B);
     free(C);
 }
